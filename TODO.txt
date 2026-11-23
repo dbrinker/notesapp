@@ -1,0 +1,14 @@
+TODO:
+* Create Model
+* Determine persistence model (JPA or Mongo)
+* Add DB Schema + JPA mappings
+* Add REST Service
+-- Controller
+-- Service
+-- Repository
+* Add user capabilities (sep service)
+-- Long term: Integrate with Spring Security
+* Tests
+-- Unit
+-- Integration
+* Docker-compose stuff to run service(s) + any other crud needed

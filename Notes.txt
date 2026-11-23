@@ -1,0 +1,40 @@
+WORKING NOTES
+- Use Mongo instead of JPA for Notes?
+-- Note is pretty much a single document (not many other attributes)
+-- Start with JPA and switch to Mongo if time
+
+- Need separate user to associate with
+-- MVP: use a integer, GUID, etc
+-- POSSIBLY add sep service for that
+-- Long term switch to Spring Security
+
+-- Model:
+  {
+      id: String,
+      user_id: String,
+      subject: String,
+      note_text: String,
+      date_updated: Date
+  }
+
+REST API
+- POST /note: create new note
+- GET /note: get all notes
+-- Sorted by date descending
+-- Can filter by user
+- GET /note/{id}
+-- Returns note with given id
+- PUT /note: edit existing note
+- DELETE /note: deletes all notes
+
+Other notes:
+- User ID in HTTP header.  Not integer for security (i.e. making IDs less predictable)
+    - Consider using Integers and switching to Strings later
+- Assume full access FOR NOW, read access for all for long term
+    - Once access control added, disable PUT and DELETE for all but creator
+    - Add admin user who can PUT/DELETE anyone's notes
+
+Decisions:
+1. Use Lombok (simplifies config/removes boilerplate)
+2. Use H2 for now (can swap out with another DB type/instance later)
+3. Authentication limited for now (i.e. just trust userid being passed in)
